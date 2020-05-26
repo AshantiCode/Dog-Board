@@ -1,11 +1,11 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import Home from "../views/Home";
-import AddDog from "../views/AddDog";
-import DogList from "../views/DogList";
-import Profile from "../views/Profile";
-import SignIn from "../views/SignIn";
-import SignUp from "../views/SignUp";
+import Home from "../components/Home";
+import AddDog from "../components/Dogs/AddDog";
+import DogList from "../components/Dogs/DogList";
+import Profile from "../components/User/Profile";
+import SignIn from "../components/User/SignIn";
+import SignUp from "../components/User/SignUp";
 
 Vue.use(VueRouter);
 

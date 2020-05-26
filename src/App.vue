@@ -1,11 +1,8 @@
 <template>
   <v-app>
-    <v-card flat class>
-      <v-toolbar app dark class="text-uppercase primary">
-        <v-app-bar-nav-icon
-          @click="sideNav = !sideNav"
-          class="hidden-sm-and-up"
-        ></v-app-bar-nav-icon>
+    <v-card>
+      <v-app-bar app dark class="text-uppercase primary">
+        <v-app-bar-nav-icon @click="sideNav = !sideNav" class="hidden-sm-and-up"></v-app-bar-nav-icon>
         <v-toolbar-title>
           <router-link to="/" tag="span" style="cursor: pointer">
             <span class="font-weight-light">Dog</span>
@@ -14,34 +11,24 @@
         </v-toolbar-title>
         <v-spacer></v-spacer>
         <v-toolbar-items class="hidden-xs-only">
-          <v-btn
-            text
-            v-for="item in menuItems"
-            :key="item.title"
-            router
-            :to="item.link"
-          >
+          <v-btn text v-for="item in menuItems" :key="item.title" router :to="item.link">
             <v-icon left>{{ item.icon }}</v-icon>
             {{ item.title }}
           </v-btn>
         </v-toolbar-items>
-      </v-toolbar>
+      </v-app-bar>
     </v-card>
+
     <v-navigation-drawer temporary dark app v-model="sideNav" color="primary">
       <v-list-item>
-        <v-list-content>
+        <v-list-item-content>
           <v-list-item-title>Menu</v-list-item-title>
-        </v-list-content>
+        </v-list-item-content>
       </v-list-item>
       <v-divider></v-divider>
       <v-list>
         <v-list-item-group v-model="menuItems">
-          <v-list-item
-            v-for="item in menuItems"
-            :key="item.title"
-            router
-            :to="item.link"
-          >
+          <v-list-item v-for="item in menuItems" :key="item.title">
             <v-icon left>{{ item.icon }}</v-icon>
             <v-list-item-content>
               <v-list-item-title>{{ item.title }}</v-list-item-title>
@@ -62,15 +49,15 @@ export default {
 
   data() {
     return {
-      sideNav: false,
+      sideNav: null,
       menuItems: [
         { icon: "mdi-paw", title: "View Dogs", link: "/dog-listing" },
         { icon: "mdi-dog", title: "Add New Dog", link: "/add-dog" },
         { icon: "mdi-account", title: "Profile", link: "/profile" },
         { icon: "mdi-face", title: "Sign Up", link: "/sign-in" },
-        { icon: "mdi-lock-open", title: "Sign In", link: "/sign-up" },
-      ],
+        { icon: "mdi-lock-open", title: "Sign In", link: "/sign-up" }
+      ]
     };
-  },
+  }
 };
 </script>

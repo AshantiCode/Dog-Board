@@ -6,6 +6,7 @@ import DogList from "../components/Dogs/DogList";
 import Profile from "../components/User/Profile";
 import SignIn from "../components/User/SignIn";
 import SignUp from "../components/User/SignUp";
+import SingleDog from "../components/Dogs/SingleDog";
 
 Vue.use(VueRouter);
 
@@ -21,6 +22,11 @@ export default new VueRouter({
       path: "/dog-listing",
       name: "dog-list",
       component: DogList,
+    },
+    {
+      path: "/dog-listing/:id",
+      name: "single-dog",
+      component: SingleDog,
     },
     {
       path: "/add-dog",

@@ -11,14 +11,20 @@
             large
             router
             :to="button.link"
-          >{{button.text}}</v-btn>
+            >{{ button.text }}</v-btn
+          >
         </v-row>
       </v-col>
     </v-row>
     <v-row justify="center">
       <v-col cols="10" md="10" lg="6">
-        <v-carousel cycle touch>
-          <v-carousel-item v-for="dog in dogs" :key="dog.id" :src="dog.imageUrl">
+        <v-carousel cycle style="cursor:pointer;">
+          <v-carousel-item
+            v-for="dog in dogs"
+            :key="dog.id"
+            :src="dog.imageUrl"
+            @click="showSingleDog(dog.id)"
+          >
             <div class="title">{{ dog.title }}</div>
           </v-carousel-item>
         </v-carousel>
@@ -28,31 +34,25 @@
 </template>
 <script>
 export default {
+  computed: {
+    dogs() {
+      return this.$store.getters.featuredDogs;
+    },
+  },
   data() {
     return {
       buttons: [
         { text: "Explore Dogs", link: "/dog-listing" },
-        { text: "Add New Dog", link: "/add-dog" }
+        { text: "Add New Dog", link: "/add-dog" },
       ],
-      dogs: [
-        {
-          imageUrl: require("@/assets/dog-1.jpg"),
-          id: "kljkljjjlj",
-          title: "Roxy wants a home"
-        },
-        {
-          imageUrl: require("@/assets/dog-2.jpg"),
-          id: "kljklddsfjjlj",
-          title: "Willi is super sweet"
-        },
-        {
-          imageUrl: require("@/assets/dog-3.jpg"),
-          id: "kljklddsfjjlj3",
-          title: "Susi is waiting for you!"
-        }
-      ]
     };
-  }
+  },
+  methods: {
+    showSingleDog: function(imageId) {
+      console.log("I was clicked");
+      this.$router.push({ name: "single-dog", params: { id: imageId } });
+    },
+  },
 };
 </script>
 

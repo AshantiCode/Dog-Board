@@ -26,6 +26,7 @@ export default new VueRouter({
     {
       path: "/dog-listing/:id",
       name: "single-dog",
+      props: true,
       component: SingleDog,
     },
     {

@@ -8,21 +8,27 @@ export const store = new Vuex.Store({
     loadedDogs: [
       {
         imageUrl: require("@/assets/dog-1.jpg"),
-        id: "kljkljjjlj",
+        id: "1",
         title: "Roxy",
-        dateOfBirth: "2016-01-02",
+        description:
+          "Puppy kitty ipsum dolor sit good dog foot stick canary. Teeth Mittens grooming vaccine walk swimming nest good boy furry tongue heel furry treats fish. Cage run fast kitten dinnertime ball run foot park fleas throw house train licks stick dinnertime window.",
+        age: "3",
       },
       {
         imageUrl: require("@/assets/dog-2.jpg"),
-        id: "kljklddsfjjlj",
+        id: "2",
         title: "Willi",
-        dateOfBirth: "2017-02-02",
+        description:
+          "Pet Food pet supplies gimme five puppy cage food feathers food heel feathers running pet gate walk lazy dog Spike. Good Boy park lazy dog walk kibble Scooby snacks licks canary.",
+        age: "2",
       },
       {
         imageUrl: require("@/assets/dog-3.jpg"),
-        id: "kljklddsfjjlj3",
+        id: "3",
         title: "Susi",
-        dateOfBirth: "2018-03-03",
+        description:
+          "Play Dead sit nap lazy dog wet nose Tigger run fast fish lazy cat wagging hamster toy field yawn feathers ferret yawn aquarium.Feathers bird seed food scratcher mouse running teeth licks heel walk pet gate maine coon cat collar twine parakeet.",
+        age: "6",
       },
     ],
     user: {
@@ -30,8 +36,22 @@ export const store = new Vuex.Store({
       savedDogs: ["kldjflkjdf"],
     },
   },
-  mutation: {},
-  actions: {},
+  mutations: {
+    addDog(state, payload) {
+      state.loadedDogs.push(payload);
+    },
+  },
+  actions: {
+    addDog({ commit }, payload) {
+      const newDog = {
+        title: payload.title,
+        description: payload.description,
+        imageUrl: payload.imageUrl,
+        age: payload.age,
+      }; //up i will reach out to firebase later
+      commit("addDog", newDog);
+    },
+  },
   getters: {
     loadedDogs(state) {
       return state.loadedDogs.sort((dogA, dogB) => {
